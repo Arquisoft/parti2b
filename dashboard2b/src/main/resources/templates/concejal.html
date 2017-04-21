@@ -1,0 +1,20 @@
+<h1>Vista de concejal</h1>
+<table id="tablaConcejal" class="responsive-table highlight">
+    <thead>
+        <tr>
+            <th>Propuesta</th>
+            <th>Cantidad de Votos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="data in suggestions track by $index">
+            <td>{{data.title}}</td>
+            <td>{{data.numberOfVotes}}</td>
+        </tr>
+    </tbody>
+</table>
+<!-- <div ng-controller="PolarAreaCtrl">
+    <canvas id="polar-area" class="chart chart-polar-area" chart-data="data" chart-labels="labels" chart-options="options">
+    </canvas>
+</div>
+ -->

@@ -1,0 +1,11 @@
+Feature: Comprobación de que funciona el inicio de sesión
+
+  Scenario: inicio de sesión de usuario
+    Given un usuario de id "DanielOrviz" y contraseña "password"
+    When hace click "Iniciar sesión"
+    Then la página actual del navegador debe ser "loguearse"
+    
+   Scenario: inicio de sesión de admin
+    Given un usuario de id "Admin1" y contraseña "admin"
+    When hace click "Iniciar sesión"
+    Then la página actual debe ser "loguearse"

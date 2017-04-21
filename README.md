@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/Arquisoft/parti2b.svg?branch=master)](https://travis-ci.org/Arquisoft/parti2b)
-[![codecov](https://codecov.io/gh/Arquisoft/dashboard2b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/dashboard2b)
+[![codecov](https://codecov.io/gh/Arquisoft/parti2b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/parti2b)
 # parti2b
 
 Descripcion:

@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Hola</title>
+<link th:href="@{/webjars/bootstrap/4.0.0-alpha.6/dist/css/bootstrap.css}" rel="stylesheet" media="screen"/>
+<link th:href="@{/webjars/bootstrap/3.3.7/dist/css/bootstrap-theme.css}" rel="stylesheet" media="screen"/>  
+</head>
+<body>
+<h1>ParticipationSystem0 skeleton</h1>
+<form th:action="@{/send}" th:object="${message}" method="POST">
+    <label for="message">Type a message: </label>
+    <input type="text" id="message" th:field="*{message}" />
+    <input type="submit" value="Send" />
+</form>
+</body>
+</html>

@@ -20,8 +20,8 @@ after_success:
 
 addons:
   sauce_connect:
-    username: "dashboard2b"
-    access_key: "176d6582-28d1-41ab-8982-97fbce376c55"
+    username: "vegaAdrian"
+    access_key: "6910fb56-830b-4a5e-aa77-23b5a1580bda"
 
 before_script:
 - "export DISPLAY=:99.0"

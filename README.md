@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/Arquisoft/parti2b.svg?branch=master)](https://travis-ci.org/Arquisoft/parti2b)
 # parti2b
 
 Descripcion:

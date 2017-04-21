@@ -1,4 +1,4 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6951fa1481c949afa4ba406833c21b75)](https://www.codacy.com/app/karol-ciok/parti2b?utm_source=github.com&utm_medium=referral&utm_content=Arquisoft/parti2b&utm_campaign=badger)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/383f288fbcbc4c36b0dd585db568a23c)](https://www.codacy.com/app/karol-ciok/parti2b?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Arquisoft/parti2b&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/Arquisoft/parti2b.svg?branch=master)](https://travis-ci.org/Arquisoft/parti2b)
 [![codecov](https://codecov.io/gh/Arquisoft/parti2b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/parti2b)
 # parti2b

@@ -13,6 +13,7 @@
       <module>participants2b</module>
     	<module>dashboard2b</module>
     	<module>participationSystem2b</module>
+    	<module>citizensLoader2b</module>
     </modules>
 
 

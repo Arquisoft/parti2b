@@ -8,7 +8,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.PendingException;
 import es.uniovi.asw.model.Participant;
-import es.uniovi.asw.persistence.BBDD;
 import es.uniovi.asw.service.Service;
 
 import java.util.List;

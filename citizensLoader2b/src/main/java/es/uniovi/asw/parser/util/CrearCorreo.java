@@ -1,4 +1,4 @@
-package es.uniovi.asw.model.util;
+package es.uniovi.asw.parser.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,7 +16,7 @@ public class CrearCorreo {
 		
 		try {
 			String nombre = ciudadano.getNombre();
-			file = new File("./correos/" + nombre + ".txt");
+			file = new File("./correos/" + nombre + "-"+ciudadano.getDni()+ ".txt");
 
 			fileWriter = new FileWriter(file);
 			String cadena = "Buenos dias " + nombre + "\n";

@@ -4,7 +4,7 @@
 	<groupId>es.uniovi.asw</groupId>
 	<artifactId>citizensLoader2b</artifactId>
 	<version>0.0.1</version>
-	<name>citizensLoader0</name>
+	<name>citizensLoader2b</name>
 	<packaging>jar</packaging>
 	<description>Citizens SubSystem</description>
 

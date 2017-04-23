@@ -5,16 +5,16 @@ import es.uniovi.asw.model.Participant;
 
 public interface BDUpdate {
 
-	void insertarCiudadano(Participant participant);
+	void addParticipant(Participant participant);
 
-	void eliminarCiudadano(String dni);
+	void deleteParticipant(String dni);
 
-	void updateCiudadano(Participant ciudadano);
+	void updateParticipant(Participant participant);
 
-	Participant obtenerCiudadano(String dni);
+	Participant findParticipant(String dni);
 
-	void guardaarPasswordUsuario(String dni, String password);
+	//void guardaarPasswordUsuario(String dni, String password);
 
-	void eliminarCiudadanos();
+	void deleteAllParticipants();
 
 }

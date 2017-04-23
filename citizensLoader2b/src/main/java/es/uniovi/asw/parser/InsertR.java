@@ -9,7 +9,7 @@ public class InsertR implements Insert{
 	@Override
 	public void addParticipant(Participant participant) {
 		BDUpdate bd = new BDUpdateImpl();
-		bd.insertarCiudadano(participant);
+		bd.addParticipant(participant);
 		
 	}
 

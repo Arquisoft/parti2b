@@ -32,50 +32,16 @@ public class AplicationTest {
 
 	@Before
 	public void before() {
-		bd.eliminarCiudadanos();
 	}
 
-	@SuppressWarnings("deprecation")
-	@Test
-	public void addCiudadanoTest() {
 
-		Participant c = new Participant("Pepe", "Garcia", "email@prueba", "dir", "España", "564613I",
-				new Date(1995 - 1900, 2, 25));
-		bd.insertarCiudadano(c);
-
-		Participant cBD = bd.obtenerCiudadano("564613I");
-		assertNotNull(cBD);
-		assertEquals("Pepe", cBD.getNombre());
-		assertEquals("Garcia", cBD.getApellidos());
-		assertEquals("email@prueba", cBD.getEmail());
-		assertEquals("dir", cBD.getDireccion());
-		assertEquals("España", cBD.getNacionalidad());
-		assertEquals("564613I", cBD.getDni());
-		assertEquals(new Date(1995 - 1900, 2, 25), cBD.getFecha_nacimiento());
-
-		c.setDireccion("direccion2");
-		c.setEmail("otroemail@.com");
-		c.setApellidos("Garcia Garcia");
-
-		bd.updateCiudadano(c);
-		cBD = bd.obtenerCiudadano("564613I");
-		assertNotNull(cBD);
-		assertEquals("Pepe", cBD.getNombre());
-		assertEquals("Garcia Garcia", cBD.getApellidos());
-		assertEquals("otroemail@.com", cBD.getEmail());
-		assertEquals("direccion2", cBD.getDireccion());
-		assertEquals("España", cBD.getNacionalidad());
-		assertEquals("564613I", cBD.getDni());
-		assertEquals(new Date(1995 - 1900, 2, 25), cBD.getFecha_nacimiento());
-
-		bd.eliminarCiudadano("564613I");
-		cBD = bd.obtenerCiudadano("564613I");
-		assertNull(cBD);
-	}
 
 	@Test
 	public void testCargarCSS() {
 		// leemos y cargamos el fichero
+		bd.deleteParticipant("90500084Y");
+		bd.deleteParticipant("19160962F");
+		bd.deleteParticipant("09940449X");
 		Xlsx cs = new Xlsx();
 		List<Participant> ciudadanos = new ArrayList<Participant>();
 		ciudadanos.addAll(cs.leerCiudadanos("./src/test/java/es/uniovi/asw/test.xlsx"));
@@ -110,14 +76,58 @@ public class AplicationTest {
 		assertEquals("Español", c.getNacionalidad());
 		assertEquals("09940449X", c.getDni());
 
+		bd.deleteParticipant("90500084Y");
+		bd.deleteParticipant("19160962F");
+		bd.deleteParticipant("09940449X");
 	}
 
 	@SuppressWarnings("deprecation")
 	@Test
+	public void addCiudadanoTest() {
+
+		Participant c = new Participant("Pepe", "Garcia", "email@prueba", "dir", "España", "564613I",
+				new Date(1995 - 1900, 2, 25),"PepeGarcia");
+		bd.addParticipant(c);
+
+		Participant cBD = bd.findParticipant("564613I");
+		assertNotNull(cBD);
+		assertEquals("Pepe", cBD.getNombre());
+		assertEquals("Garcia", cBD.getApellidos());
+		assertEquals("email@prueba", cBD.getEmail());
+		assertEquals("dir", cBD.getDireccion());
+		assertEquals("España", cBD.getNacionalidad());
+		assertEquals("564613I", cBD.getDni());
+		assertEquals(new Date(1995 - 1900, 2, 25), cBD.getFecha_nacimiento());
+
+		c.setDireccion("direccion2");
+		c.setEmail("otroemail@.com");
+		c.setApellidos("Garcia Garcia");
+
+		bd.updateParticipant(c);
+		cBD = bd.findParticipant("564613I");
+		assertNotNull(cBD);
+		assertEquals("Pepe", cBD.getNombre());
+		assertEquals("Garcia Garcia", cBD.getApellidos());
+		assertEquals("otroemail@.com", cBD.getEmail());
+		assertEquals("direccion2", cBD.getDireccion());
+		assertEquals("España", cBD.getNacionalidad());
+		assertEquals("564613I", cBD.getDni());
+		assertEquals(new Date(1995 - 1900, 2, 25), cBD.getFecha_nacimiento());
+
+		bd.deleteParticipant("564613I");
+		cBD = bd.findParticipant("564613I");
+		assertNull(cBD);
+		
+	}
+	@SuppressWarnings("deprecation")
+	@Test
 	public void testCargarCiudadanos() {
 		// leemos y cargamos el fichero
-		
-		List<Participant> ciudadanos = read.leerParticipantsXlsx("./src/test/java/es/uniovi/asw/test.xlsx");
+		bd.deleteParticipant("90500084Y");
+		bd.deleteParticipant("19160962F");
+		bd.deleteParticipant("09940449X");
+		List<Participant> ciudadanos = new ArrayList<Participant>();
+		ciudadanos.addAll(read.leerParticipantsXlsx("./src/test/java/es/uniovi/asw/test.xlsx"));
 //		for (Participant participant : ciudadanos) {
 //			bd.insertarCiudadano(participant);
 //		}
@@ -153,16 +163,20 @@ public class AplicationTest {
 		assertEquals("Español", c.getNacionalidad());
 		assertEquals("09940449X", c.getDni());
 
-		assertNotNull(bd.obtenerCiudadano("90500084Y"));
-		assertNotNull(bd.obtenerCiudadano("19160962F"));
-		assertNotNull(bd.obtenerCiudadano("09940449X"));
+		assertNotNull(bd.findParticipant("90500084Y"));
+		assertNotNull(bd.findParticipant("19160962F"));
+		assertNotNull(bd.findParticipant("09940449X"));
+		
+		bd.deleteParticipant("90500084Y");
+		bd.deleteParticipant("19160962F");
+		bd.deleteParticipant("09940449X");
 	}
 
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testCrearCorreo() {
 		Participant c = new Participant("Marcos", "Garcia", "marcos@mail.com", "C/ peru 3", "Español", "87963215P",
-				new Date(1990 - 1900, 2, 10));
+				new Date(1990 - 1900, 2, 10),"MarcosGarcia");
 		c.setPassword(CreatePassword.crearPassword());
 		assertNotNull(c.getPassword());
 
@@ -176,7 +190,7 @@ public class AplicationTest {
 		correo[0] = "Buenos dias " + c.getNombre();
 		correo[1] = "Usted a sido dado de alta con exito en el sistema de particion ciudadana.";
 		correo[2] = "Sus credenciales son:";
-		correo[3] = "\tUsuario: " + c.getEmail();
+		correo[3] = "\tUsuario: " + c.getNombre()+c.getApellidos();
 		correo[4] = "\tContraseña: " + c.getPassword();
 		correo[5] = "";
 		correo[6] = "Un saludo y gracias por darse de alta.";
@@ -209,9 +223,15 @@ public class AplicationTest {
 		String rutaCVS = "./src/test/java/es/uniovi/asw/test.csv";
 
 		xlsx = read.leerParticipantsXlsx(rutaXLSX);
-		bd.eliminarCiudadanos();
+		
+		bd.deleteParticipant("90500084Y");
+		bd.deleteParticipant("19160962F");
+		bd.deleteParticipant("09940449X");
 		cvs = read.leerParticipantsCsv(rutaCVS);
 		
+		bd.deleteParticipant("90500084Y");
+		bd.deleteParticipant("19160962F");
+		bd.deleteParticipant("09940449X");
 		for (int i = 0; i < cvs.size(); i++) {
 			assertTrue((xlsx.get(i)).equals(cvs.get(i)));
 			assertTrue((xlsx.get(i)).hashCode() == (cvs.get(i)).hashCode());
@@ -224,6 +244,7 @@ public class AplicationTest {
 		List<Participant> xlsx = new ArrayList<Participant>();
 		String rutaXLSX = "./src/test/java/es/uniovi/asw/test1.xlsx";
 		read.leerParticipantsXlsx(rutaXLSX);
+		
 	}
 	
 	@Test
@@ -232,6 +253,7 @@ public class AplicationTest {
 		List<Participant> cvs = new ArrayList<Participant>();
 		String rutaCVS = "./src/test/java/es/uniovi/asw/test.csv";
 		cvs = read.leerParticipantsCsv(rutaCVS);
+		
 	}
 
 	@SuppressWarnings("deprecation")
@@ -239,15 +261,15 @@ public class AplicationTest {
 	public void testEliminarCiudadano() {
 
 		Participant ciudadano = new Participant("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español",
-				"123456789A", new Date(18, 7, 1995));
+				"123456789A", new Date(18, 7, 1995),"HugoPerez");
 
-		bd.insertarCiudadano(ciudadano);
-		Participant cBBDD = bd.obtenerCiudadano("123456789A");
+		bd.addParticipant(ciudadano);
+		Participant cBBDD = bd.findParticipant("123456789A");
 		assertNotNull(cBBDD);
 
-		bd.eliminarCiudadano("123456789A");
+		bd.deleteParticipant("123456789A");
 
-		cBBDD = bd.obtenerCiudadano("123456789A");
+		cBBDD = bd.findParticipant("123456789A");
 		assertNull(cBBDD);
 	}
 
@@ -255,32 +277,33 @@ public class AplicationTest {
 	@Test
 	public void testEliminarTodosCiudadanos() {
 		Participant ciudadano = new Participant("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español",
-				"123456789A", new Date(18, 7, 1995));
+				"123456789A", new Date(18, 7, 1995),"HugoPerez");
 
-		bd.insertarCiudadano(ciudadano);
-		Participant cBBDD = bd.obtenerCiudadano("123456789A");
+		bd.addParticipant(ciudadano);
+		Participant cBBDD = bd.findParticipant("123456789A");
 		assertNotNull(cBBDD);
 
-		bd.eliminarCiudadanos();
+		bd.deleteParticipant("123456789A");
+		
 
-		cBBDD = bd.obtenerCiudadano("123456789A");
+		cBBDD = bd.findParticipant("123456789A");
 		assertNull(cBBDD);
 	}
 
-	@SuppressWarnings("deprecation")
-	@Test
-	public void testCrearPassword() {
-
-		Participant ciudadano = new Participant("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español", "1234A",
-				new Date(18, 7, 1995));
-
-		bd.insertarCiudadano(ciudadano);
-		Participant cBBDD = bd.obtenerCiudadano("1234A");
-		String password = CreatePassword.crearPassword();
-		bd.guardaarPasswordUsuario("1234A", password);
-		cBBDD = bd.obtenerCiudadano("1234A");
-
-		assertEquals(password, cBBDD.getPassword());
-	}
+//	@SuppressWarnings("deprecation")
+//	@Test
+//	public void testCrearPassword() {
+//
+//		Participant ciudadano = new Participant("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español", "1234A",
+//				new Date(18, 7, 1995),"HugoPerez");
+//
+//		bd.addParticipant(ciudadano);
+//		Participant cBBDD = bd.findParticipant("1234A");
+//		String password = CreatePassword.crearPassword();
+//		//bd.guardaarPasswordUsuario("1234A", password);
+//		cBBDD = bd.findParticipant("1234A");
+//
+//		assertEquals(password, cBBDD.getPassword());
+//	}
 
 }

@@ -41,17 +41,17 @@ public class Csv {
 				String apellidos = trozos[1];
 				String dni= trozos[6];
 				
-				Participant p = bd.obtenerCiudadano(dni);
+				Participant p = bd.findParticipant(dni);
 				
 				
 				if(p==null){
 					Participant ciu = new Participant(nombreP,apellidos, trozos[2], trozos[4], trozos[5], dni,
-							nacimiento);
+							nacimiento,nombreP+apellidos);
 					String password = CreatePassword.crearPassword();
 					ciu.setPassword(password);
 					ciudadanos.add(ciu);
 					CrearCorreo.mandarCorreo(ciu);
-					bd.insertarCiudadano(ciu);
+					bd.addParticipant(ciu);
 				}else{
 					sb.append("No se ha insertado el usuario "+nombreP +" "+ apellidos+"con dni: "+ dni+ ", porque ya existe\n");
 				}

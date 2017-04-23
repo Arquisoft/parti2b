@@ -22,7 +22,7 @@ public class CrearCorreo {
 			String cadena = "Buenos dias " + nombre + "\n";
 			cadena += "Usted a sido dado de alta con exito en el sistema de particion ciudadana.\n";
 			cadena += "Sus credenciales son:\n";
-			cadena += "\tUsuario: " + ciudadano.getEmail() + "\n";
+			cadena += "\tUsuario: " + ciudadano.getNombre()+ciudadano.getApellidos() + "\n";
 			cadena += "\tContraseña: " + ciudadano.getPassword() + "\n";
 			cadena += "\nUn saludo y gracias por darse de alta.\n";
 			cadena += "\nAtentamente el ayuntamiento.";

@@ -21,5 +21,9 @@ public class ParticipantFinder {
 		return p.get(0);
 	}
 
+	public static List<Participant> findAll() {
+		return Jpa.getManager().createNamedQuery("Participant.findAll",Participant.class).getResultList();
+	}
+
 
 }

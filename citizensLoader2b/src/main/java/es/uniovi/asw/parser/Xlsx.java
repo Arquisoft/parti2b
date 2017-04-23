@@ -51,15 +51,15 @@ public class Xlsx {
 				String nombreP =aux.get(0).toString() ;
 				String apellidos = aux.get(1).toString();
 				String dni= aux.get(6).toString();
-				Participant p = bd.obtenerCiudadano(dni);
+				Participant p = bd.findParticipant(dni);
 				if(p==null){
 					Participant ciudadano = new Participant(nombreP, apellidos, aux.get(2).toString(),
-							aux.get(4).toString(), aux.get(5).toString(), dni, nacimiento);
+							aux.get(4).toString(), aux.get(5).toString(), dni, nacimiento,nombreP+apellidos);
 					String password = CreatePassword.crearPassword();
 					ciudadano.setPassword(password);
 					ciudadanos.add(ciudadano);
 					CrearCorreo.mandarCorreo(ciudadano);
-					bd.insertarCiudadano(ciudadano);
+					bd.addParticipant(ciudadano);
 				}else{
 					
 					sb.append("No se ha insertado el usuario "+nombreP +" "+ apellidos+"con dni: "+ dni+ ", porque ya existe\n");

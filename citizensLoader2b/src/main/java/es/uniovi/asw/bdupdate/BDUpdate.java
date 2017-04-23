@@ -13,7 +13,7 @@ public interface BDUpdate {
 
 	Participant findParticipant(String dni);
 
-	//void guardaarPasswordUsuario(String dni, String password);
+	void saveUserPassword(String dni, String password);
 
 	void deleteAllParticipants();
 

@@ -24,27 +24,61 @@ import es.uniovi.asw.parser.RList;
 import es.uniovi.asw.parser.ReadList;
 import es.uniovi.asw.parser.Xlsx;
 import es.uniovi.asw.parser.util.CrearCorreo;
-import es.uniovi.asw.parser.util.CreatePassword;
 
 public class AplicationTest {
-	private ReadList read = new RList();
-	private BDUpdate bd = new BDUpdateImpl();
+	private BDUpdate BBDD = new BDUpdateImpl();
+	private ReadList reader = new RList();
 
 	@Before
 	public void before() {
+		BBDD.deleteAllParticipants();
 	}
 
+	@SuppressWarnings("deprecation")
+	@Test
+	public void addCiudadanoTest() {
+		
 
+		Participant c = new Participant("Pepe", "Garcia", "email@prueba", "dir", "España", "564613I",
+				new Date(1995 - 1900, 2, 25),"PepeGarcia");
+		
+		BBDD.addParticipant(c);
+
+		Participant cBD = BBDD.findParticipant("564613I");
+		assertNotNull(cBD);
+		assertEquals("Pepe", cBD.getNombre());
+		assertEquals("Garcia", cBD.getApellidos());
+		assertEquals("email@prueba", cBD.getEmail());
+		assertEquals("dir", cBD.getDireccion());
+		assertEquals("España", cBD.getNacionalidad());
+		assertEquals("564613I", cBD.getDni());
+		assertEquals(new Date(1995 - 1900, 2, 25), cBD.getFecha_nacimiento());
+
+		c.setDireccion("direccion2");
+		c.setEmail("otroemail@.com");
+		c.setApellidos("Garcia Garcia");
+
+		BBDD.updateParticipant(c);
+		cBD = BBDD.findParticipant("564613I");
+		assertNotNull(cBD);
+		assertEquals("Pepe", cBD.getNombre());
+		assertEquals("Garcia Garcia", cBD.getApellidos());
+		assertEquals("otroemail@.com", cBD.getEmail());
+		assertEquals("direccion2", cBD.getDireccion());
+		assertEquals("España", cBD.getNacionalidad());
+		assertEquals("564613I", cBD.getDni());
+		assertEquals(new Date(1995 - 1900, 2, 25), cBD.getFecha_nacimiento());
+
+		BBDD.deleteParticipant("564613I");
+		cBD = BBDD.findParticipant("564613I");
+		assertNull(cBD);
+	}
 
 	@Test
 	public void testCargarCSS() {
 		// leemos y cargamos el fichero
-		bd.deleteParticipant("90500084Y");
-		bd.deleteParticipant("19160962F");
-		bd.deleteParticipant("09940449X");
-		Xlsx cs = new Xlsx();
 		List<Participant> ciudadanos = new ArrayList<Participant>();
-		ciudadanos.addAll(cs.leerCiudadanos("./src/test/java/es/uniovi/asw/test.xlsx"));
+		ciudadanos =  reader.leerParticipantsXlsx("./src/test/java/es/uniovi/asw/test.xlsx");
 
 		// probamos con el primer ciudadano
 		Participant c = ciudadanos.get(0);
@@ -76,61 +110,14 @@ public class AplicationTest {
 		assertEquals("Español", c.getNacionalidad());
 		assertEquals("09940449X", c.getDni());
 
-		bd.deleteParticipant("90500084Y");
-		bd.deleteParticipant("19160962F");
-		bd.deleteParticipant("09940449X");
 	}
 
-	@SuppressWarnings("deprecation")
-	@Test
-	public void addCiudadanoTest() {
-
-		Participant c = new Participant("Pepe", "Garcia", "email@prueba", "dir", "España", "564613I",
-				new Date(1995 - 1900, 2, 25),"PepeGarcia");
-		bd.addParticipant(c);
-
-		Participant cBD = bd.findParticipant("564613I");
-		assertNotNull(cBD);
-		assertEquals("Pepe", cBD.getNombre());
-		assertEquals("Garcia", cBD.getApellidos());
-		assertEquals("email@prueba", cBD.getEmail());
-		assertEquals("dir", cBD.getDireccion());
-		assertEquals("España", cBD.getNacionalidad());
-		assertEquals("564613I", cBD.getDni());
-		assertEquals(new Date(1995 - 1900, 2, 25), cBD.getFecha_nacimiento());
-
-		c.setDireccion("direccion2");
-		c.setEmail("otroemail@.com");
-		c.setApellidos("Garcia Garcia");
-
-		bd.updateParticipant(c);
-		cBD = bd.findParticipant("564613I");
-		assertNotNull(cBD);
-		assertEquals("Pepe", cBD.getNombre());
-		assertEquals("Garcia Garcia", cBD.getApellidos());
-		assertEquals("otroemail@.com", cBD.getEmail());
-		assertEquals("direccion2", cBD.getDireccion());
-		assertEquals("España", cBD.getNacionalidad());
-		assertEquals("564613I", cBD.getDni());
-		assertEquals(new Date(1995 - 1900, 2, 25), cBD.getFecha_nacimiento());
-
-		bd.deleteParticipant("564613I");
-		cBD = bd.findParticipant("564613I");
-		assertNull(cBD);
-		
-	}
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testCargarCiudadanos() {
 		// leemos y cargamos el fichero
-		bd.deleteParticipant("90500084Y");
-		bd.deleteParticipant("19160962F");
-		bd.deleteParticipant("09940449X");
-		List<Participant> ciudadanos = new ArrayList<Participant>();
-		ciudadanos.addAll(read.leerParticipantsXlsx("./src/test/java/es/uniovi/asw/test.xlsx"));
-//		for (Participant participant : ciudadanos) {
-//			bd.insertarCiudadano(participant);
-//		}
+		List<Participant> ciudadanos = reader.leerParticipantsXlsx(
+				"./src/test/java/es/uniovi/asw/test.xlsx");
 		
 		
 		// probamos con el primer ciudadano
@@ -163,13 +150,9 @@ public class AplicationTest {
 		assertEquals("Español", c.getNacionalidad());
 		assertEquals("09940449X", c.getDni());
 
-		assertNotNull(bd.findParticipant("90500084Y"));
-		assertNotNull(bd.findParticipant("19160962F"));
-		assertNotNull(bd.findParticipant("09940449X"));
-		
-		bd.deleteParticipant("90500084Y");
-		bd.deleteParticipant("19160962F");
-		bd.deleteParticipant("09940449X");
+		assertNotNull(BBDD.findParticipant("90500084Y"));
+		assertNotNull(BBDD.findParticipant("19160962F"));
+		assertNotNull(BBDD.findParticipant("09940449X"));
 	}
 
 	@SuppressWarnings("deprecation")
@@ -177,8 +160,6 @@ public class AplicationTest {
 	public void testCrearCorreo() {
 		Participant c = new Participant("Marcos", "Garcia", "marcos@mail.com", "C/ peru 3", "Español", "87963215P",
 				new Date(1990 - 1900, 2, 10),"MarcosGarcia");
-		c.setPassword(CreatePassword.crearPassword());
-		assertNotNull(c.getPassword());
 
 		String rutaFichero = "./correos/" + c.getNombre()+"-"+c.getDni() + ".txt";
 		File fichero = new File(rutaFichero);
@@ -216,22 +197,16 @@ public class AplicationTest {
 
 	@Test
 	public void testEqualsXlsxCsv() {
-		List<Participant> xlsx = new ArrayList<Participant>();
-		List<Participant> cvs = new ArrayList<Participant>();
+		ArrayList<Participant> xlsx = new ArrayList<Participant>();
+		ArrayList<Participant> cvs = new ArrayList<Participant>();
 
 		String rutaXLSX = "./src/test/java/es/uniovi/asw/test.xlsx";
 		String rutaCVS = "./src/test/java/es/uniovi/asw/test.csv";
 
-		xlsx = read.leerParticipantsXlsx(rutaXLSX);
-		
-		bd.deleteParticipant("90500084Y");
-		bd.deleteParticipant("19160962F");
-		bd.deleteParticipant("09940449X");
-		cvs = read.leerParticipantsCsv(rutaCVS);
-		
-		bd.deleteParticipant("90500084Y");
-		bd.deleteParticipant("19160962F");
-		bd.deleteParticipant("09940449X");
+		reader.leerParticipantsXlsx( rutaXLSX);
+		BBDD.deleteAllParticipants();
+		reader.leerParticipantsCsv( rutaCVS);
+
 		for (int i = 0; i < cvs.size(); i++) {
 			assertTrue((xlsx.get(i)).equals(cvs.get(i)));
 			assertTrue((xlsx.get(i)).hashCode() == (cvs.get(i)).hashCode());
@@ -240,20 +215,14 @@ public class AplicationTest {
 	
 	@Test
 	public void exceptionXLSX(){
-		@SuppressWarnings("unused")
-		List<Participant> xlsx = new ArrayList<Participant>();
 		String rutaXLSX = "./src/test/java/es/uniovi/asw/test1.xlsx";
-		read.leerParticipantsXlsx(rutaXLSX);
-		
+		reader.leerParticipantsXlsx( rutaXLSX);
 	}
 	
 	@Test
 	public void exceptionCSV(){
-		@SuppressWarnings("unused")
-		List<Participant> cvs = new ArrayList<Participant>();
 		String rutaCVS = "./src/test/java/es/uniovi/asw/test.csv";
-		cvs = read.leerParticipantsCsv(rutaCVS);
-		
+		reader.leerParticipantsCsv(rutaCVS);
 	}
 
 	@SuppressWarnings("deprecation")
@@ -263,13 +232,14 @@ public class AplicationTest {
 		Participant ciudadano = new Participant("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español",
 				"123456789A", new Date(18, 7, 1995),"HugoPerez");
 
-		bd.addParticipant(ciudadano);
-		Participant cBBDD = bd.findParticipant("123456789A");
+		
+		BBDD.addParticipant(ciudadano);
+		Participant cBBDD = BBDD.findParticipant("123456789A");
 		assertNotNull(cBBDD);
 
-		bd.deleteParticipant("123456789A");
+		BBDD.deleteParticipant("123456789A");
 
-		cBBDD = bd.findParticipant("123456789A");
+		cBBDD = BBDD.findParticipant("123456789A");
 		assertNull(cBBDD);
 	}
 
@@ -279,31 +249,30 @@ public class AplicationTest {
 		Participant ciudadano = new Participant("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español",
 				"123456789A", new Date(18, 7, 1995),"HugoPerez");
 
-		bd.addParticipant(ciudadano);
-		Participant cBBDD = bd.findParticipant("123456789A");
+		BBDD.addParticipant(ciudadano);
+		Participant cBBDD = BBDD.findParticipant("123456789A");
 		assertNotNull(cBBDD);
 
-		bd.deleteParticipant("123456789A");
-		
+		BBDD.deleteAllParticipants();
 
-		cBBDD = bd.findParticipant("123456789A");
+		cBBDD = BBDD.findParticipant("123456789A");
 		assertNull(cBBDD);
 	}
 
-//	@SuppressWarnings("deprecation")
-//	@Test
-//	public void testCrearPassword() {
-//
-//		Participant ciudadano = new Participant("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español", "1234A",
-//				new Date(18, 7, 1995),"HugoPerez");
-//
-//		bd.addParticipant(ciudadano);
-//		Participant cBBDD = bd.findParticipant("1234A");
-//		String password = CreatePassword.crearPassword();
-//		//bd.guardaarPasswordUsuario("1234A", password);
-//		cBBDD = bd.findParticipant("1234A");
-//
-//		assertEquals(password, cBBDD.getPassword());
-//	}
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testCrearPassword() {
+
+		Participant ciudadano = new Participant("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español", "1234A",
+				new Date(18, 7, 1995),"HugoPerez");
+
+		BBDD.addParticipant(ciudadano);
+		Participant cBBDD = BBDD.findParticipant("1234A");
+		String password = cBBDD.getPassword();
+		BBDD.saveUserPassword("1234A", password);
+		cBBDD = BBDD.findParticipant("1234A");
+
+		assertEquals(password, cBBDD.getPassword());
+	}
 
 }

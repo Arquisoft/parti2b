@@ -1,16 +1,25 @@
 package es.uniovi.asw.model;
 
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import java.sql.Date;
+@Entity
+@Table(name = "PARTICIPANT")
+public class Participant implements Serializable {
 
-
-
-
-
-public class Participant {
-
-
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
 	private String apellidos;
@@ -20,7 +29,7 @@ public class Participant {
 	private String dni;
 	private String password;
 	private String usuario;
-
+	@Temporal(TemporalType.DATE)
 	private Date fecha_nacimiento;
 
 	
@@ -161,6 +170,6 @@ public class Participant {
 		return true;
 	}
 
+	
+	}
 
-
-}

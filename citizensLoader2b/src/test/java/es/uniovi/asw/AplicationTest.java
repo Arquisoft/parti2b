@@ -22,8 +22,8 @@ import es.uniovi.asw.bdupdate.BDUpdateImpl;
 import es.uniovi.asw.model.Participant;
 import es.uniovi.asw.parser.RList;
 import es.uniovi.asw.parser.ReadList;
-import es.uniovi.asw.parser.Xlsx;
 import es.uniovi.asw.parser.util.CrearCorreo;
+import es.uniovi.asw.parser.util.CreatePassword;
 
 public class AplicationTest {
 	private BDUpdate BBDD = new BDUpdateImpl();
@@ -259,20 +259,10 @@ public class AplicationTest {
 		assertNull(cBBDD);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testCrearPassword() {
 
-		Participant ciudadano = new Participant("Hugo", "Perez", "yo@me.com", "Calle no se que Oviedo", "español", "1234A",
-				new Date(18, 7, 1995),"HugoPerez");
-
-		BBDD.addParticipant(ciudadano);
-		Participant cBBDD = BBDD.findParticipant("1234A");
-		String password = cBBDD.getPassword();
-		BBDD.saveUserPassword("1234A", password);
-		cBBDD = BBDD.findParticipant("1234A");
-
-		assertEquals(password, cBBDD.getPassword());
+		assertNotNull(CreatePassword.crearPassword());
 	}
 
 }

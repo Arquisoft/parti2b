@@ -77,7 +77,11 @@
 		    <artifactId>hibernate-core</artifactId>
 		    <version>5.2.9.Final</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.6.4</version>
+		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
@@ -166,7 +170,7 @@
 					<!-- MainClass in mainfest make a executable jar -->
 					<archive>
 						<manifest>
-							<mainClass>es.uniovi.asw.MainPruebas</mainClass>
+							<mainClass>es.uniovi.asw.main.Main</mainClass>
 						</manifest>
 					</archive>
 

@@ -18,8 +18,8 @@ import es.uniovi.asw.parser.util.CreatePassword;
 
 public class Csv {
 
-	public List<Participant> leerCiudadanos(String ruta) {
-		List<Participant> ciudadanos = new ArrayList<Participant>();
+	public List<Participant> leerParticipant(String ruta) {
+		List<Participant> participants = new ArrayList<Participant>();
 		BDUpdate bd = new BDUpdateImpl();
 		WriteReportBD wreport = new WreportR();
 		StringBuilder sb = new StringBuilder();
@@ -49,7 +49,7 @@ public class Csv {
 							nacimiento,nombreP+apellidos);
 					String password = CreatePassword.crearPassword();
 					ciu.setPassword(password);
-					ciudadanos.add(ciu);
+					participants.add(ciu);
 					CrearCorreo.mandarCorreo(ciu);
 					bd.addParticipant(ciu);
 				}else{
@@ -63,6 +63,6 @@ public class Csv {
 		} catch (Exception e) {
 			System.out.println("Error leyendo el fichero csv");
 		}
-		return ciudadanos;
+		return participants;
 	}
 }

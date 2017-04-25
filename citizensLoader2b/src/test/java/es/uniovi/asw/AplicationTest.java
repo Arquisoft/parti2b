@@ -31,7 +31,12 @@ public class AplicationTest {
 
 	@Before
 	public void before() {
-		BBDD.deleteAllParticipants();
+		delete();
+	}
+	private void delete(){
+		BBDD.deleteParticipant("90500084Y");
+		BBDD.deleteParticipant("19160962F");
+		BBDD.deleteParticipant("09940449X");
 	}
 
 	@SuppressWarnings("deprecation")
@@ -204,7 +209,7 @@ public class AplicationTest {
 		String rutaCVS = "./src/test/java/es/uniovi/asw/test.csv";
 
 		reader.leerParticipantsXlsx( rutaXLSX);
-		BBDD.deleteAllParticipants();
+		delete();
 		reader.leerParticipantsCsv( rutaCVS);
 
 		for (int i = 0; i < cvs.size(); i++) {
@@ -253,7 +258,7 @@ public class AplicationTest {
 		Participant cBBDD = BBDD.findParticipant("123456789A");
 		assertNotNull(cBBDD);
 
-		BBDD.deleteAllParticipants();
+		BBDD.deleteParticipant("123456789A");
 
 		cBBDD = BBDD.findParticipant("123456789A");
 		assertNull(cBBDD);

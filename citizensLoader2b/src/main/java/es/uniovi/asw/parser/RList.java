@@ -9,13 +9,13 @@ public class RList implements ReadList {
 	@Override
 	public List<Participant> leerParticipantsCsv(String ruta) {
 		Csv csv = new Csv();
-		return csv.leerCiudadanos( ruta);
+		return csv.leerParticipant( ruta);
 	}
 
 	@Override
 	public List<Participant> leerParticipantsXlsx(String ruta) {
 		Xlsx xl = new Xlsx();
-		return xl.leerCiudadanos(ruta);
+		return xl.leerParticipants(ruta);
 	}
 
 }

@@ -38,8 +38,12 @@ public class Main {
 		if(extension.equals("xlsx")){
 			ciudadanos.addAll(read.leerParticipantsXlsx(ruta));
 		}
-		for (Participant ciudadano : ciudadanos) {
-			System.out.println("imprimiendo desde el main " + ciudadano);
+		if(ciudadanos.size()>0){
+			for (Participant ciudadano : ciudadanos) {
+				System.out.println("Participante añadido " + ciudadano);
+			}
+		}else{
+			System.out.println("Ningun participante a añadir");
 		}
 		
 //		bd.eliminarCiudadanos();

@@ -22,13 +22,14 @@ import es.uniovi.asw.parser.util.CreatePassword;
 
 public class Xlsx {
 
-	public List<Participant> leerCiudadanos( String ruta) {
-		List<Participant> ciudadanos = new ArrayList<Participant>();
+	public List<Participant> leerParticipants( String ruta) {
+		List<Participant> participants = new ArrayList<Participant>();
 		BDUpdate bd = new BDUpdateImpl();
 		WriteReportBD wreport = new WreportR();
 		StringBuilder sb = new StringBuilder();
 		try {
-			FileInputStream file = new FileInputStream(new File(ruta));
+			File f = new File(ruta);
+			FileInputStream file = new FileInputStream(f);
 			XSSFWorkbook workbook = new XSSFWorkbook(file);
 			XSSFSheet sheet = workbook.getSheetAt(0);
 
@@ -57,7 +58,7 @@ public class Xlsx {
 							aux.get(4).toString(), aux.get(5).toString(), dni, nacimiento,nombreP+apellidos);
 					String password = CreatePassword.crearPassword();
 					ciudadano.setPassword(password);
-					ciudadanos.add(ciudadano);
+					participants.add(ciudadano);
 					CrearCorreo.mandarCorreo(ciudadano);
 					bd.addParticipant(ciudadano);
 				}else{
@@ -72,7 +73,7 @@ public class Xlsx {
 		} catch (Exception e) {
 			System.err.println("Error al leer del excel xlsx");
 		}
-		return ciudadanos;
+		return participants;
 	}
 
 }

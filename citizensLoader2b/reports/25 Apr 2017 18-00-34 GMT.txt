@@ -1,3 +1,0 @@
-No se ha insertado el usuario Juan Torres Pardocon dni: 90500084Y, porque ya existe
-No se ha insertado el usuario Luis López Fernandocon dni: 19160962F, porque ya existe
-No se ha insertado el usuario Ana Torres Pardocon dni: 09940449X, porque ya existe

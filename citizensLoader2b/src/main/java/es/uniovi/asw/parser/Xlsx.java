@@ -71,7 +71,7 @@ public class Xlsx {
 			file.close();
 			workbook.close();
 		} catch (Exception e) {
-			System.err.println("Error al leer del excel xlsx");
+			wreport.addReport("Error al leer del excel xlsx");;
 		}
 		return participants;
 	}

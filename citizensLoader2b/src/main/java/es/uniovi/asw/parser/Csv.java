@@ -61,7 +61,7 @@ public class Csv {
 			buffReader.close();
 
 		} catch (Exception e) {
-			System.out.println("Error leyendo el fichero csv");
+			wreport.addReport("Error al leer el archivo csv");
 		}
 		return participants;
 	}

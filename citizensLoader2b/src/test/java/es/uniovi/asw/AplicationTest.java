@@ -218,17 +218,17 @@ public class AplicationTest {
 		}
 	}
 	
-	@Test
-	public void exceptionXLSX(){
-		String rutaXLSX = "./src/test/java/es/uniovi/asw/test1.xlsx";
-		reader.leerParticipantsXlsx( rutaXLSX);
-	}
-	
-	@Test
-	public void exceptionCSV(){
-		String rutaCVS = "./src/test/java/es/uniovi/asw/test.csv";
-		reader.leerParticipantsCsv(rutaCVS);
-	}
+//	@Test
+//	public void exceptionXLSX(){
+//		String rutaXLSX = "./src/test/java/es/uniovi/asw/test1.xlsx";
+//		reader.leerParticipantsXlsx( rutaXLSX);
+//	}
+//	
+//	@Test
+//	public void exceptionCSV(){
+//		String rutaCVS = "./src/test/java/es/uniovi/asw/test.csv";
+//		reader.leerParticipantsCsv(rutaCVS);
+//	}
 
 	@SuppressWarnings("deprecation")
 	@Test

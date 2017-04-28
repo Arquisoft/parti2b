@@ -9,18 +9,25 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uniovi.asw.dbmanagement.CategoryData;
+import es.uniovi.asw.dbmanagement.CommentData;
+import es.uniovi.asw.dbmanagement.ParticipantData;
+import es.uniovi.asw.dbmanagement.SuggestionData;
+import es.uniovi.asw.dbmanagement.impl.CategoryDataImpl;
+import es.uniovi.asw.dbmanagement.impl.CommentDataImpl;
+import es.uniovi.asw.dbmanagement.impl.ParticipantDataImpl;
+import es.uniovi.asw.dbmanagement.impl.SuggestionDataImpl;
 import es.uniovi.asw.model.Category;
 import es.uniovi.asw.model.Comment;
 import es.uniovi.asw.model.Participant;
 import es.uniovi.asw.model.Suggestion;
-import es.uniovi.asw.service.Service;
-import es.uniovi.asw.service.impl.CategoryServiceImpl;
-import es.uniovi.asw.service.impl.CommentServiceImpl;
-import es.uniovi.asw.service.impl.ParticipantServiceImpl;
-import es.uniovi.asw.service.impl.SuggestionServiceImpl;
 
 public class AplicationTest {
 
+	CommentData servComment= new CommentDataImpl();
+	ParticipantData servPart= new ParticipantDataImpl();
+	SuggestionData servSug=new SuggestionDataImpl();
+	CategoryData servCat = new CategoryDataImpl();
 	@Before
 	public void before() {
 		//Service.getParticipantService().init();
@@ -30,10 +37,7 @@ public class AplicationTest {
 	@Test
 	public void jpaTest(){
 		
-		CommentServiceImpl servComment=Service.getCommentService();
-		ParticipantServiceImpl servPart= Service.getParticipantService();
-		SuggestionServiceImpl servSug=Service.getSuggestionService();
-		CategoryServiceImpl servCat = Service.getCategoryService();
+		
 //		Participant user = new Participant("Daniel", "Orviz", "orviz@prueba", "dir", "España", "23453212Y",
 //				new Date(1995 - 1900, 2, 14),"DanielOrviz");
 		assertNotNull(servPart.findParticipant("23453212Y"));
@@ -46,7 +50,7 @@ public class AplicationTest {
 		
 		//lo metemos en la base de datos
 		servPart.addParticipant(c);
-		assertNotNull(Service.getParticipantService().findParticipant("1564613I"));
+		assertNotNull(servPart.findParticipant("1564613I"));
 		// creamos una sugerencia
 		
 		Category categoria = new Category("Categoria p");

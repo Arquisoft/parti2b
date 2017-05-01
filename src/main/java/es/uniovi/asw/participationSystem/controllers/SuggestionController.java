@@ -33,7 +33,7 @@ import es.uniovi.asw.dbmanagement.repositories.impl.ParticipantDataImpl;
 import es.uniovi.asw.dbmanagement.repositories.impl.SuggestionDataImpl;
 import es.uniovi.asw.participationSystem.pojos.Notification;
 import es.uniovi.asw.participationSystem.pojos.NotificationType;
-import es.uniovi.asw.participationSystem.producers.KafkaProducer;
+//import es.uniovi.asw.participationSystem.producers.KafkaProducer;
 
 @Controller
 @Scope("session")
@@ -43,8 +43,8 @@ public class SuggestionController {
 	 * Atributos en sesion: user -> contiene el Particpant logueado suggestion
 	 * -> la sugerencia que se selecciona para ver
 	 */
-	@Autowired
-	private KafkaProducer kafkaProducer;
+	//@Autowired
+	//private KafkaProducer kafkaProducer;
 	private SuggestionData sugData = new SuggestionDataImpl();
 	private CommentData commentData = new CommentDataImpl();
 	private ParticipantData partData = new ParticipantDataImpl();
@@ -116,7 +116,7 @@ public class SuggestionController {
 			ObjectNode json = JsonNodeFactory.instance.objectNode();
 	        json.put("type", n.getType().ordinal());
 	        json.put("suggestionId",n.getSuggestionId());
-	        kafkaProducer.send("exampleTopic", json.toString());
+	        //kafkaProducer.send("exampleTopic", json.toString());
 			return "principalUsuario";
 		}
 		return "addSuggestion";

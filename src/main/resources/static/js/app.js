@@ -12,6 +12,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, Chart
             url: "/dashboard",
             templateUrl: 'dashboard.html'
         })
+         .state('participation', {
+             // abstract: true,
+             url: "/participation",
+             templateUrl: 'dashboard.html'
+         })
         .state('dashboard.alcalde', {
             url: '/alcalde',
             templateUrl: 'alcalde.html',
@@ -20,6 +25,14 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, Chart
         .state('dashboard.concejal', {
             url: '/concejal',
             templateUrl: 'concejal.html'
+        })
+        .state('participation.user', {
+            url: '/principalUsuario',
+            templateUrl: 'principalUsuario.html'
+        })
+        .state('participation.admin', {
+            url: '/principalAdmin',
+            templateUrl: 'principalAdmin.html'
         })
     $urlRouterProvider.otherwise("/login");
     //          $locationProvider.html5Mode({ enabled: true, requireBase: true });

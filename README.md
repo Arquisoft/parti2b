@@ -2,9 +2,12 @@
 [![Build Status](https://travis-ci.org/Arquisoft/parti2b.svg?branch=master)](https://travis-ci.org/Arquisoft/parti2b)
 [![codecov](https://codecov.io/gh/Arquisoft/parti2b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/parti2b)
 # parti2b
+[![VoteCounting Heroku](https://img.shields.io/badge/View%20on-Heroku-ff69b4.svg)](http://parti2b.herokuapp.com/) Voting System en Heroku!
 
-Descripcion:
-
+## participants
+## citizenLoader
+## dashboard
+## participationSystem
 
 # Authors
 

@@ -4,6 +4,7 @@
 # parti2b
 ## Voting System en Heroku!
 [![VoteCounting Heroku](https://img.shields.io/badge/View%20on-Heroku-ff69b4.svg)](http://parti2b.herokuapp.com/) 
+
 Si se visita el enlace del boton anterior entraremos a la pantalla del login de la aplicación desplegada.
 Dependiendo del rol de usuario con el que se haga el registro la aplicación nos redirigirá a vistas diferentes.
 ### Roles y Vistas

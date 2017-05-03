@@ -8,9 +8,9 @@
 Si se visita el enlace del boton anterior entraremos a la pantalla del login de la aplicación desplegada.
 Dependiendo del rol de usuario con el que se haga el registro la aplicación nos redirigirá a vistas diferentes.
 ### Roles y Vistas
-* Politico: vista del control de mandos con propuestas su número de votos y una gráfica. ej: Login:alcalde, Pass:alcalde
-* Ciudadano: vista de las propuestas con todos sus datos. ej: Login:lopez, Pass:lopez
-* Administrador: vista de las propuestas con información adicional solamente visible por el administrador. ej: Login:admin, Pass:admin
+* _Politico_: vista del control de mandos con propuestas su número de votos y una gráfica. ej: __Login:alcalde, Pass:alcalde__
+* _Ciudadano_: vista de las propuestas con todos sus datos. ej: __Login:lopez, Pass:lopez__
+* _Administrador_: vista de las propuestas con información adicional solamente visible por el administrador. ej: __Login:admin, Pass:admin__
 
 ## participants
 ## citizenLoader

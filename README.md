@@ -2,7 +2,14 @@
 [![Build Status](https://travis-ci.org/Arquisoft/parti2b.svg?branch=master)](https://travis-ci.org/Arquisoft/parti2b)
 [![codecov](https://codecov.io/gh/Arquisoft/parti2b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/parti2b)
 # parti2b
-[![VoteCounting Heroku](https://img.shields.io/badge/View%20on-Heroku-ff69b4.svg)](http://parti2b.herokuapp.com/) Voting System en Heroku!
+## Voting System en Heroku!
+[![VoteCounting Heroku](https://img.shields.io/badge/View%20on-Heroku-ff69b4.svg)](http://parti2b.herokuapp.com/) 
+Si se visita el enlace del boton anterior entraremos a la pantalla del login de la aplicación desplegada.
+Dependiendo del rol de usuario con el que se haga el registro la aplicación nos redirigirá a vistas diferentes.
+### Roles y Vistas
+* Politico: vista del control de mandos con propuestas su número de votos y una gráfica. ej: Login:alcalde, Pass:alcalde
+* Ciudadano: vista de las propuestas con todos sus datos. ej: Login:lopez, Pass:lopez
+* Administrador: vista de las propuestas con información adicional solamente visible por el administrador. ej: Login:admin, Pass:admin
 
 ## participants
 ## citizenLoader

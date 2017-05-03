@@ -1,5 +1,6 @@
 package es.uniovi.asw.participants.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import es.uniovi.asw.dbmanagement.model.Participant;
@@ -40,7 +41,7 @@ public class ParticipantController {
      *         BAD_REQUEST si la peticion es incorrecta
      */
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public ResponseEntity<ParticipantInfo> queryInfo(
+    public ResponseEntity<ParticipantInfo> queryInfo(HttpSession session,
 	    @RequestBody @Valid final LoginWrapper loginWrapper) {
 
 	if (loginWrapper == null)
@@ -51,9 +52,11 @@ public class ParticipantController {
 	if (p == null)
 	    return new ResponseEntity<ParticipantInfo>(HttpStatus.NOT_FOUND);
 
-	if (p.getPassword().equals(loginWrapper.getPassword()))
-	    return new ResponseEntity<ParticipantInfo>(new ParticipantInfo(p),
-		    HttpStatus.OK);
+	if (p.getPassword().equals(loginWrapper.getPassword())) {
+		session.setAttribute("user", p);
+		return new ResponseEntity<ParticipantInfo>(new ParticipantInfo(p),
+				HttpStatus.OK);
+	}
 
 	return new ResponseEntity<ParticipantInfo>(HttpStatus.NOT_FOUND);
     }

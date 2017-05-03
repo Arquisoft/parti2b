@@ -1,5 +1,8 @@
 package es.uniovi.asw.dbmanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,12 +22,14 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "SUGGESTION")
+@JsonIgnoreProperties({"participant", "comments"})
 public class Suggestion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne
+	@JsonIgnore
 	private Participant participant;
 
 	private String title;

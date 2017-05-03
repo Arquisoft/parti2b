@@ -1,12 +1,13 @@
 package es.uniovi.asw.dashboard.controllers;
 
+import es.uniovi.asw.dashboard.pojos.SuggestionInfo;
 import es.uniovi.asw.dbmanagement.model.Suggestion;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface SuggestionController {
-    ResponseEntity<Suggestion> getSuggestion(Long id);
+    ResponseEntity<SuggestionInfo> getSuggestion(Long id);
 
-    ResponseEntity<List<Suggestion>> getAllSuggestions();
+    ResponseEntity<List<SuggestionInfo>> getAllSuggestions();
 }

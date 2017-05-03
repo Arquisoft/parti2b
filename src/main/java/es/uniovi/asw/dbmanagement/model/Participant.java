@@ -1,5 +1,7 @@
 package es.uniovi.asw.dbmanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import es.uniovi.asw.dbmanagement.types.ParticipantType;
 
 import javax.persistence.*;
@@ -11,6 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "PARTICIPANT")
+@JsonIgnoreProperties(value = {"comments", "suggestions"})
 public class Participant implements Serializable {
 
 	/**
@@ -34,8 +37,10 @@ public class Participant implements Serializable {
 	private ParticipantType type;
 
 	@OneToMany(mappedBy = "participant")
+	@JsonIgnore
 	private Set<Comment> comments = new HashSet<Comment>();
 	@OneToMany(mappedBy = "participant")
+	@JsonIgnore
 	private Set<Suggestion> suggestions = new HashSet<Suggestion>();
 	
 	private boolean admin;

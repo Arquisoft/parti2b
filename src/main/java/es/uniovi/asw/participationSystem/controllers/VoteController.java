@@ -7,10 +7,10 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import es.uniovi.asw.dbmanagement.model.*;
-import es.uniovi.asw.dbmanagement.repositories.CategoryData;
-import es.uniovi.asw.dbmanagement.repositories.CommentData;
-import es.uniovi.asw.dbmanagement.repositories.SuggestionData;
-import es.uniovi.asw.dbmanagement.repositories.VoteData;
+import es.uniovi.asw.dbmanagement.persistence.CategoryData;
+import es.uniovi.asw.dbmanagement.persistence.CommentData;
+import es.uniovi.asw.dbmanagement.persistence.SuggestionData;
+import es.uniovi.asw.dbmanagement.persistence.VoteData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import es.uniovi.asw.dbmanagement.repositories.impl.CategoryDataImpl;
-import es.uniovi.asw.dbmanagement.repositories.impl.CommentDataImpl;
-import es.uniovi.asw.dbmanagement.repositories.impl.SuggestionDataImpl;
-import es.uniovi.asw.dbmanagement.repositories.impl.VoteDataImpl;
+import es.uniovi.asw.dbmanagement.persistence.impl.CategoryDataImpl;
+import es.uniovi.asw.dbmanagement.persistence.impl.CommentDataImpl;
+import es.uniovi.asw.dbmanagement.persistence.impl.SuggestionDataImpl;
+import es.uniovi.asw.dbmanagement.persistence.impl.VoteDataImpl;
 
 @Controller
 @Scope("session")
@@ -34,10 +34,13 @@ public class VoteController {
 	 * -> la sugerencia que se selecciona para ver
 	 */
 	@Autowired
-	private SuggestionData sugData = new SuggestionDataImpl();
-	private CommentData commentData = new CommentDataImpl();
-	private VoteData voteData = new VoteDataImpl();
-	private CategoryData catData = new CategoryDataImpl();
+	private SuggestionData sugData;
+	@Autowired
+	private CommentData commentData;
+	@Autowired
+	private VoteData voteData;
+	@Autowired
+	private CategoryData catData;
 	
 
 	

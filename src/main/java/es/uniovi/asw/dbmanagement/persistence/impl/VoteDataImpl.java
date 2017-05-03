@@ -1,17 +1,20 @@
-package es.uniovi.asw.dbmanagement.repositories.impl;
+package es.uniovi.asw.dbmanagement.persistence.impl;
 
 import es.uniovi.asw.dbmanagement.model.Comment;
 import es.uniovi.asw.dbmanagement.model.Suggestion;
-import es.uniovi.asw.dbmanagement.repositories.CommentData;
-import es.uniovi.asw.dbmanagement.repositories.SuggestionData;
-import es.uniovi.asw.dbmanagement.repositories.VoteData;
+import es.uniovi.asw.dbmanagement.persistence.CommentData;
+import es.uniovi.asw.dbmanagement.persistence.SuggestionData;
+import es.uniovi.asw.dbmanagement.persistence.VoteData;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class VoteDataImpl implements VoteData {
 
-	CommentData comentData= new CommentDataImpl();
-	SuggestionData sugData= new SuggestionDataImpl();
+	@Autowired
+	CommentData comentData;
+	@Autowired
+	SuggestionData sugData;
 	
 	@Override
 	public void votePositiveComment(Comment comment) {

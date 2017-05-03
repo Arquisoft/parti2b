@@ -3,7 +3,7 @@ package es.uniovi.asw.participants.controller;
 import javax.validation.Valid;
 
 import es.uniovi.asw.dbmanagement.model.Participant;
-import es.uniovi.asw.dbmanagement.repositories.ParticipantData;
+import es.uniovi.asw.dbmanagement.persistence.ParticipantData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

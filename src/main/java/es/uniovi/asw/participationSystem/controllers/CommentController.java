@@ -8,9 +8,9 @@ import javax.servlet.http.HttpSession;
 
 
 import es.uniovi.asw.dbmanagement.model.*;
-import es.uniovi.asw.dbmanagement.repositories.CategoryData;
-import es.uniovi.asw.dbmanagement.repositories.CommentData;
-import es.uniovi.asw.dbmanagement.repositories.SuggestionData;
+import es.uniovi.asw.dbmanagement.persistence.CategoryData;
+import es.uniovi.asw.dbmanagement.persistence.CommentData;
+import es.uniovi.asw.dbmanagement.persistence.SuggestionData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-import es.uniovi.asw.dbmanagement.repositories.impl.CategoryDataImpl;
-import es.uniovi.asw.dbmanagement.repositories.impl.CommentDataImpl;
-import es.uniovi.asw.dbmanagement.repositories.impl.SuggestionDataImpl;
+import es.uniovi.asw.dbmanagement.persistence.impl.CategoryDataImpl;
+import es.uniovi.asw.dbmanagement.persistence.impl.CommentDataImpl;
+import es.uniovi.asw.dbmanagement.persistence.impl.SuggestionDataImpl;
 
 
 @Controller
@@ -34,9 +34,11 @@ public class CommentController {
 	 * -> la sugerencia que se selecciona para ver
 	 */
 	@Autowired
-	private SuggestionData sugData = new SuggestionDataImpl();
-	private CommentData commentData = new CommentDataImpl();
-	private CategoryData catData = new CategoryDataImpl();
+	private SuggestionData sugData;
+	@Autowired
+	private CommentData commentData;
+	@Autowired
+	private CategoryData catData;
 	
 
 

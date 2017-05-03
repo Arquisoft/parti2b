@@ -1,1 +1,0 @@
-INSERT INTO SUGGESTION (title) VALUES ('Prueba');

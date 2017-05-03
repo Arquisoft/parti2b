@@ -1,7 +1,7 @@
 package es.uniovi.asw.dashboard.controllers;
 
 import es.uniovi.asw.dbmanagement.model.Suggestion;
-import es.uniovi.asw.dbmanagement.repositories.SuggestionData;
+import es.uniovi.asw.dbmanagement.persistence.SuggestionData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -13,6 +13,25 @@ Dependiendo del rol de usuario con el que se haga el registro la aplicación nos
 * _Administrador_: vista de las propuestas con información adicional solamente visible por el administrador. ej: __Login:admin, Pass:admin__
 
 ## participants
+Se trata de un servicio web RESTfull el cual recibe el login y password en el cuerpo de una petición POST en json o xml, comprueba si un usuario con esos credenciales existe en la base de datos y devuelve sus datos en formato json o xml.
+
+Un ejemplo:
+_Enviamos una petición POST a la url `<direccionApp>/user` cuyo cuerpo sea:_
+
+    {
+      'login':'usuario',
+      'password':'pass'
+    }
+    
+ _La respuesta que llega si el usuarios es correcto en el cuerpo tiene los datos del usuario:_
+ 
+    {
+      'nombre':'usuario',
+      'appelidos':'pass',
+      'email':'email@email.com',
+      ...
+    }
+    
 ## citizenLoader
 ## dashboard
 ## participationSystem

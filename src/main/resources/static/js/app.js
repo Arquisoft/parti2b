@@ -98,7 +98,7 @@ function LoginController($scope, $state) {
             $state.go('dashboard.concejal');
         } else if ($scope.email === 'admin@gmail.com') {
             $state.go('participation.admin');
-        } else ($scope.email === 'usuario@gmail.com'){
+        } else {
             $state.go('participation.user');
         }
     }

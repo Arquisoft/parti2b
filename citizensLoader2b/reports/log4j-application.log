@@ -1,0 +1,14 @@
+2017-05-05 16:16:57 INFO  ENGINE:? - checkpointClose start
+2017-05-05 16:16:57 INFO  ENGINE:? - checkpointClose end
+2017-05-05 16:17:07 INFO  ENGINE:? - checkpointClose start
+2017-05-05 16:17:07 INFO  ENGINE:? - checkpointClose end
+2017-05-05 16:17:43 INFO  ENGINE:? - checkpointClose start
+2017-05-05 16:17:43 INFO  ENGINE:? - checkpointClose end
+2017-05-05 16:17:54 INFO  ENGINE:? - checkpointClose start
+2017-05-05 16:17:54 INFO  ENGINE:? - checkpointClose end
+2017-05-05 16:17:54 INFO  Participant:13 - No se ha insertado el usuario Juan Torres Pardocon dni: 90500084Y, porque ya existe
+No se ha insertado el usuario Luis López Fernandocon dni: 19160962F, porque ya existe
+No se ha insertado el usuario Ana Torres Pardocon dni: 09940449X, porque ya existe
+
+2017-05-05 16:19:24 INFO  ENGINE:? - checkpointClose start
+2017-05-05 16:19:25 INFO  ENGINE:? - checkpointClose end

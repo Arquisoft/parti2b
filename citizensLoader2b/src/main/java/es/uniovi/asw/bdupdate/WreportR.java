@@ -1,15 +1,14 @@
 package es.uniovi.asw.bdupdate;
 
 import es.uniovi.asw.reportWriter.WreportP;
-import es.uniovi.asw.reportWriter.WriteReport;
 
-public class WreportR implements WriteReportBD{
+public class WreportR implements WriteReport{
 
 	@Override
 	public void addReport(String report) {
 		if(report!=null){
 			if(!report.equals("")){
-				WriteReport r = new WreportP();
+				WreportP r = new WreportP();
 				r.writeReport(report);
 			}
 			

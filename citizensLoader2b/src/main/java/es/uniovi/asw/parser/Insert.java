@@ -6,4 +6,6 @@ public interface Insert {
 	
 	public void addParticipant(Participant participant);
 
+	public Participant findParticipant(String dni);
+
 }

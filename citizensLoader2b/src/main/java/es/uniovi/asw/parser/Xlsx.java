@@ -12,10 +12,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import es.uniovi.asw.bdupdate.BDUpdate;
-import es.uniovi.asw.bdupdate.BDUpdateImpl;
 import es.uniovi.asw.bdupdate.WreportR;
-import es.uniovi.asw.bdupdate.WriteReportBD;
+import es.uniovi.asw.bdupdate.WriteReport;
 import es.uniovi.asw.model.Participant;
 import es.uniovi.asw.parser.util.CrearCorreo;
 import es.uniovi.asw.parser.util.CreatePassword;
@@ -24,8 +22,8 @@ public class Xlsx {
 
 	public List<Participant> leerParticipants( String ruta) {
 		List<Participant> participants = new ArrayList<Participant>();
-		BDUpdate bd = new BDUpdateImpl();
-		WriteReportBD wreport = new WreportR();
+		Insert bd = new InsertR();
+		WriteReport wreport = new WreportR();
 		StringBuilder sb = new StringBuilder();
 		try {
 			File f = new File(ruta);

@@ -1,6 +1,6 @@
 package es.uniovi.asw.bdupdate;
 
-public interface WriteReportBD {
+public interface WriteReport {
 	
 	public void addReport(String report);
 

@@ -21,9 +21,6 @@ public class Main {
 		String ruta = scanner.nextLine();
 		ruta = ruta.replace("\"", "");
 		
-//		String[] trozos = ruta.split("/");
-//		String[] trozoFinal = trozos[trozos.length-1].split(".");
-//		String extension = trozoFinal[trozoFinal.length-1];
 		
 		String[] subcadenas = ruta.split("\\.");
 		String extension = subcadenas[subcadenas.length-1];

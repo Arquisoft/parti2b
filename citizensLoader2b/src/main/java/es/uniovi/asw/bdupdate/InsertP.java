@@ -12,7 +12,7 @@ import org.hsqldb.jdbc.JDBCDriver;
 import es.uniovi.asw.model.Participant;
 
 
-public class BDUpdateImpl implements BDUpdate{
+public class InsertP{
 
 
 
@@ -44,7 +44,6 @@ public class BDUpdateImpl implements BDUpdate{
 	 * @param ciudadanos,
 	 *            lista de ciudadanos a insertar en la base de datos
 	 */
-	@Override
 	public void addParticipant(Participant participant) {
 		Connection con = crearConexion();
 		try {
@@ -79,7 +78,6 @@ public class BDUpdateImpl implements BDUpdate{
 	 * @param dni
 	 *            del ciudadano a borrar
 	 */
-	@Override
 	public void deleteParticipant(String dni) {
 		Connection con = crearConexion();
 		try {
@@ -107,7 +105,6 @@ public class BDUpdateImpl implements BDUpdate{
 	 * @param participant
 	 *            a actualizar
 	 */
-	@Override
 	public void updateParticipant(Participant participant) {
 		Connection con = crearConexion();
 		try {
@@ -134,7 +131,6 @@ public class BDUpdateImpl implements BDUpdate{
 			e.printStackTrace();
 		}
 	}
-	@Override
 	public Participant findParticipant(String dni) {
 		Connection con = crearConexion();
 		String consulta = "SELECT c.* FROM participant c WHERE c.dni = ?";
@@ -165,7 +161,6 @@ public class BDUpdateImpl implements BDUpdate{
 	/**
 	 * Elimina todos los ciudadanos
 	 */
-	@Override
 	public void deleteAllParticipants() {
 		Connection con = crearConexion();
 		try {

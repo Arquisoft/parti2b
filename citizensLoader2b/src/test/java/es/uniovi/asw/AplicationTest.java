@@ -17,8 +17,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.uniovi.asw.bdupdate.BDUpdate;
-import es.uniovi.asw.bdupdate.BDUpdateImpl;
+import es.uniovi.asw.bdupdate.InsertP;
 import es.uniovi.asw.model.Participant;
 import es.uniovi.asw.parser.RList;
 import es.uniovi.asw.parser.ReadList;
@@ -26,7 +25,7 @@ import es.uniovi.asw.parser.util.CrearCorreo;
 import es.uniovi.asw.parser.util.CreatePassword;
 
 public class AplicationTest {
-	private BDUpdate BBDD = new BDUpdateImpl();
+	private InsertP BBDD = new InsertP();
 	private ReadList reader = new RList();
 
 	@Before

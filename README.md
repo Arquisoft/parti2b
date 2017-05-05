@@ -2,9 +2,37 @@
 [![Build Status](https://travis-ci.org/Arquisoft/parti2b.svg?branch=master)](https://travis-ci.org/Arquisoft/parti2b)
 [![codecov](https://codecov.io/gh/Arquisoft/parti2b/branch/master/graph/badge.svg)](https://codecov.io/gh/Arquisoft/parti2b)
 # parti2b
-[![VoteCounting Heroku](https://img.shields.io/badge/View%20on-Heroku-ff69b4.svg)](http://parti2b.herokuapp.com/) Voting System en Heroku!
+## Voting System en Heroku!
+[![VoteCounting Heroku](https://img.shields.io/badge/View%20on-Heroku-ff69b4.svg)](http://parti2b.herokuapp.com/) 
 
-## participants
+Visitando el enlace del boton anterior entraremos a la pantalla del login de la aplicación desplegada.
+Dependiendo del rol de usuario con el que se haga el registro la aplicación nos redirigirá a vistas diferentes.
+### Roles y Vistas
+* _Politico_: vista del control de mandos con propuestas su número de votos y una gráfica. ej: __Login:alcalde, Pass:alcalde__
+* _Concejal_: vista del control de mandos con propuestas su número de votos y una gráfica menos detallada que el rol de politico. ej: __Login:concejal, Pass:concejal__
+* _Ciudadano_: vista de las propuestas con todos sus datos. ej: __Login:lopez, Pass:lopez__
+* _Administrador_: vista de las propuestas con información adicional solamente visible por el administrador. ej: __Login:admin, Pass:admin__
+
+## Participants
+Se trata de un servicio web RESTfull el cual recibe el login y password en el cuerpo de una petición POST en json o xml, comprueba si un usuario con esos credenciales existe en la base de datos y devuelve sus datos en formato json o xml.
+
+Un ejemplo:
+_Enviamos una petición POST a la url `<direccionApp>/user` cuyo cuerpo sea:_
+
+    {
+      'login':'usuario',
+      'password':'pass'
+    }
+    
+ _La respuesta que llega si el usuarios es correcto en el cuerpo tiene los datos del usuario:_
+ 
+    {
+      'nombre':'usuario',
+      'appelidos':'pass',
+      'email':'email@email.com',
+      ...
+    }
+    
 ## citizenLoader
 ## dashboard
 ## participationSystem

@@ -91,13 +91,15 @@ app.controller('LoginController', LoginController);
 LoginController.$inject = ['$scope', '$state'];
 
 function LoginController($scope, $state) {
-    console.log('LoginController');
-
     $scope.login = function(val) {
         if ($scope.email === 'alcalde@gmail.com') {
             $state.go('dashboard.alcalde');
-        } else {
+        } else if ($scope.email === 'concejal@gmail.com'){
             $state.go('dashboard.concejal');
+        } else if ($scope.email === 'admin@gmail.com') {
+            $state.go('participation.admin');
+        } else ($scope.email === 'usuario@gmail.com'){
+            $state.go('participation.user');
         }
     }
 }

@@ -13,8 +13,10 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utils.SauceUtils;
+
 public class TestSelenium {
-	WebDriver driver = new HtmlUnitDriver();
+	WebDriver driver = SauceUtils.getDriver("TestsSelenium");	
 	private static String baseUrl = "http://localhost:8080";
 
 	@Test

@@ -9,6 +9,6 @@ public interface ParticipantRepository extends JpaRepository<Participant, Long>{
 
     Participant findByDni(String dni);
 
-    @Query("select p from Participant p where p.email = ?1 and p.password = ?2")
+    @Query("select p from Participant p where p.usuario = ?1 and p.password = ?2")
     Participant findByLoginAndPass(String usuario, String password);
 }

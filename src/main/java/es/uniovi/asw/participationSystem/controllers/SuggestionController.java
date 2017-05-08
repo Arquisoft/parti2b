@@ -50,7 +50,9 @@ public class SuggestionController {
     }
 
     @RequestMapping("/principalUsuario")
-    public String principalUsuario(Model model) {
+    public String principalUsuario(HttpSession session, Model model) {
+    	Participant p = partData.findLogableUser("lopez", "lopez");
+    	session.setAttribute("user",p);
         return "principalUsuario";
     }
 
